@@ -1,6 +1,8 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { useContext } from 'react';
 import { Header, Hero, Row } from 'src/components';
+import { AuthContext } from 'src/context/auth.context';
 import { IMovie } from 'src/interfaces/app.interface';
 import { API_REQUEST } from 'src/services/api.service';
 
@@ -14,6 +16,10 @@ export default function Home({
 	history,
 	comedy,
 }: HomeProps): JSX.Element {
+	const { isLoading } = useContext(AuthContext);
+
+	if (isLoading) return <>{null}</>;
+
 	return (
 		<div className='relative min-h-screen'>
 			<Head>
