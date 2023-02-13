@@ -17,4 +17,8 @@
 	.navLink {
 		@apply cursor-pointer text-sm font-light text-[#fff] hover:text-[#b3b3b3];
 	}
+
+	.input {
+		@apply w-full rounded bg-[#333] px-5 py-4 placeholder-[gray] outline-none focus:bg-[#454545];
+	}
 }
