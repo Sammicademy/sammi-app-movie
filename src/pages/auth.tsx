@@ -4,15 +4,12 @@ import { useState } from 'react';
 import { TextField } from 'src/components';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
 import { useAuth } from 'src/hooks/useAuth';
+import { GetServerSideProps } from 'next';
 
 const Auth = () => {
 	const [auth, setAuth] = useState<'signup' | 'signin'>('signin');
 	const { error, isLoading, signIn, signUp, user, setIsLoading } = useAuth();
-	const router = useRouter();
-
-	if (user) router.push('/');
 
 	const toggleAuth = (state: 'signup' | 'signin') => {
 		setAuth(state);
@@ -85,3 +82,17 @@ const Auth = () => {
 };
 
 export default Auth;
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+	const user_id = req.cookies.user_id;
+
+	if (user_id) {
+		return {
+			redirect: { destination: '/', permanent: false },
+		};
+	}
+
+	return {
+		props: {},
+	};
+};
