@@ -34,3 +34,25 @@ export interface Product {
 	};
 	name: string;
 }
+
+export interface Subscription {
+	current_period_start: number;
+	id: string;
+	current_period_end: number;
+	plan: {
+		amount: true;
+		active: boolean;
+		nickname: string;
+	};
+	default_payment_method: {
+		card: {
+			brand: string;
+			exp_month: number;
+			exp_year: number;
+			last4: number;
+		};
+	};
+	customer: {
+		email: string;
+	};
+}
