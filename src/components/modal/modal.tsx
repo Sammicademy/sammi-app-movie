@@ -63,7 +63,7 @@ const Modal = () => {
 						style={{ position: 'absolute', top: 0, left: 0 }}
 						muted={muted}
 					/>
-					<div className='absolute bottom-10 left-10 flex w-full items-center justify-between px-18'>
+					<div className='absolute bottom-10 left-10 right-10 flex w-full items-center justify-between px-18'>
 						<div className='flex space-x-2'>
 							<button
 								onClick={() => setPlaying(prev => !prev)}
@@ -87,10 +87,10 @@ const Modal = () => {
 							<button className='modalButton'>
 								<AiOutlineLike className='w-7 h-7' />
 							</button>
-							<button className='modalButton' onClick={() => setMuted(prev => !prev)}>
-								{muted ? <BsVolumeMute className='w-7 h-7' /> : <BsVolumeDown className='w-7 h-7' />}
-							</button>
 						</div>
+						<button className='modalButton absolute right-12' onClick={() => setMuted(prev => !prev)}>
+							{muted ? <BsVolumeMute className='w-7 h-7' /> : <BsVolumeDown className='w-7 h-7' />}
+						</button>
 					</div>
 				</div>
 

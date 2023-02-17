@@ -8,9 +8,10 @@ import { MembershipPlan } from 'src/components';
 import { Subscription } from 'src/interfaces/app.interface';
 import { API_REQUEST } from 'src/services/api.service';
 import moment from 'moment';
+import { useAuth } from 'src/hooks/useAuth';
 
 const Account = ({ subscription }: AccountProps) => {
-	console.log(subscription);
+	const { logout } = useAuth();
 
 	return (
 		<>
@@ -54,7 +55,9 @@ const Account = ({ subscription }: AccountProps) => {
 
 				<div className='mt-6 grid grid-cols-1 gap-x-4 border px-4 py-4 md:grid-cols-4 md:bordder-x-0 md:border-t md:border-b-0 md:pb-0'>
 					<h4 className='text-lg text-[gray]'>Settings</h4>
-					<p className='col-span-3 cursor-pointer text-blue-500 hover:underline'>Sign out of all devices</p>
+					<p className='col-span-3 cursor-pointer text-blue-500 hover:underline' onClick={logout}>
+						Sign out of all devices
+					</p>
 				</div>
 			</main>
 		</>
